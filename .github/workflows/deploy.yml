@@ -24,15 +24,19 @@ jobs:
           node-version: 18
 
       - name: Install dependencies
-        run: npm install
+        run: |
+          cd trusted-notifications-frontend
+          npm install
 
       - name: Build project
-        run: npm run build
+        run: |
+          cd trusted-notifications-frontend
+          npm run build
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: trusted-notifications-frontend/dist
 
   deploy:
     needs: build
